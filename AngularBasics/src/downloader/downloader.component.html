@@ -8,7 +8,7 @@
 
 
         <div style="width: 60%">
-        <div style="display: flex;" >
+        <div style="display: flex; flex-wrap: wrap;" >
             <form style="width:60%;padding: 0.5rem;" class="example-form">
 
                 <mat-form-field class="example-full-width">
@@ -33,12 +33,14 @@
                 </mat-form-field>
 
 
-
+                <div style="width:50%;display:inline-flex;justify-content:stretch">
+                    <button (click)="generateVideoAndAudio()" mat-raised-button color="primary">Download</button>
+                </div>
 
 
             </form>
            
-            <video  id="videoPreview" style="width:60%;padding: 0.5rem;" width="60%" height="210" *ngFor="let ydata of previewUrl" controls>
+            <video  id="videoPreview" style="padding: 0.5rem;" width="auto" height="210" *ngFor="let ydata of previewUrl" controls>
 
                 <source src="{{ydata.url}}">
             </video>
@@ -46,15 +48,17 @@
 
                 
             
-            <div style="width:50%;display:inline-flex;justify-content:space-around">
-                <button (click)="generateVideoAndAudio()" mat-raised-button color="primary">Download</button>
-            </div>
+           
             <mat-list class="example-form" *ngFor="let ydata of youTubeData">
                 <mat-list-item class="example-full-width" style="background: blueviolet;display: inline-flex;">
                     <span style="color: white;" matListItemTitle>{{ydata.qualityLabel}}</span>
                     <span style="color: white;" matListItemLine>{{ydata.audioQuality}}</span>
-                    <button style="color: white;" (click)="generateBufferAndDownload(ydata)" mat-icon-button matListItemMeta>
-                        <mat-icon>download</mat-icon>
+                    <button style="color: black;
+                    display: inline-flex;
+                    height: fit-content;
+                    margin-top: 1rem;
+                    line-height: 1rem;" (click)="generateBufferAndDownload(ydata)" mat-raised-button color="accent" matListItemMeta>
+                        Preview
                     </button>
                     
                 </mat-list-item>

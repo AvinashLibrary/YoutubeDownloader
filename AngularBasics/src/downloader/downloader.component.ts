@@ -74,6 +74,14 @@ export class DownloaderComponent {
   generateVideoAndAudio(){
     this.loadListData.getYoutubeData(this.userUrlF.value).subscribe((response: any) => {
       var valueKey = (this.mimeTypeSel.getRawValue() as any).value;
+      
+      
+      var filteredArryaFormats = response.body.adaptiveFormats.filter((valF:any,index:any,self:any)=>(
+        index === self.findIndex((t:any)=>(
+          t.qualityLabel === valF.qualityLabel
+        ))
+      ))
+
 
       if(this.selectedPlatform ===  "inst"){
         this.youTubeData = response.body.yStreamData.video;
@@ -87,9 +95,10 @@ export class DownloaderComponent {
         this.youTubeData = response.body.formats;
         this.previewUrl = [this.youTubeData[0]];
       }else if(valueKey === 'audio'){
-        this.youTubeData =  response.body.adaptiveFormats.filter((val:any)=> val.mimeType.includes("audio"))
+        this.youTubeData =  filteredArryaFormats.filter((val:any)=> val.mimeType.includes("audio"))
       }else if(valueKey === 'video-no'){
-        this.youTubeData =  response.body.adaptiveFormats.filter((val:any)=> val.mimeType.includes("video"))
+        this.youTubeData =  filteredArryaFormats.filter((val:any)=> val.mimeType.includes("video"));
+       
       }
     }
     })
