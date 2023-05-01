@@ -89,7 +89,7 @@ app.get('/downloadVideoFile', async (req: Request, res: Response) => {
   axios({
     method: 'get',
     url: downUri,
-    responseType: 'stream',
+    responseType: 'document',
     headers:{
       "Content-Type":'media',
       "Content-Transfer-Encoding": "base64"
@@ -105,9 +105,9 @@ app.get('/downloadVideoFile', async (req: Request, res: Response) => {
       res.set('Content-Type','video/mp4')
         
 
-      response.data.pipe(res)
+      // response.data.pipe(res)
 
-      // res.send(response.data)
+      res.send(response.data)
  
 
       

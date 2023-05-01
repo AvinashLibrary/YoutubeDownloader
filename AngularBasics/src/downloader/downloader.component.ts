@@ -87,9 +87,9 @@ export class DownloaderComponent {
         this.youTubeData = response.body.formats;
         this.previewUrl = [this.youTubeData[0]];
       }else if(valueKey === 'audio'){
-        this.youTubeData =  response.body.adaptiveFormats.filter((val:any)=> val.includes("audio"))
+        this.youTubeData =  response.body.adaptiveFormats.filter((val:any)=> val.mimeType.includes("audio"))
       }else if(valueKey === 'video-no'){
-        this.youTubeData =  response.body.adaptiveFormats.filter((val:any)=> val.includes("video"))
+        this.youTubeData =  response.body.adaptiveFormats.filter((val:any)=> val.mimeType.includes("video"))
       }
     }
     })
@@ -97,48 +97,41 @@ export class DownloaderComponent {
   }
 
   generateBufferAndDownload3(item:any){
-    debugger
-    var getSelected = item;
-    var link : any = document.getElementById("videoDowloader");
-    link.setAttribute('download',"alpha")
-      
-        link.href = getSelected.url; 
-        link.click();
-    };
+
+    var myVidepoTag = document.getElementById('videoPreview')
+    // var getSelected = item;
+    // let link:any= document.createElement('a');
+    // link.hidden = true;
+    // link.setAttribute('download',"alpha")
+    // link.href = getSelected.url; 
+    // document.body.appendChild(link);
+    // link.click();
+   };
   
 
   generateBufferAndDownload(item:any){
     debugger
     var getSelected = item;
-    this.loadListData.downloadContent(getSelected.url).subscribe((data)=>{
-      let blob = new Blob([data], {type: 'video/mp4'});
-      let link:any= document.createElement('a');
-      link.hidden = true;
-      link.setAttribute('download',"alpha")
-      // var myUrl = URL.createObjectURL(blob);
+    this.previewUrl = [item];
 
-      let reader = new FileReader();
-      reader.readAsDataURL(blob); // converts the blob to base64 and calls onload
+/* Low performance code but useful
+ */  
+    // this.loadListData.downloadContent(getSelected.url).subscribe((data)=>{
+    //   let blob = new Blob([data], {type: 'video/mp4'});
+    //   let link:any= document.createElement('a');
+    //   link.hidden = true;
+    //   link.setAttribute('download',"alpha")
+    //   // var myUrl = URL.createObjectURL(blob);
 
-      reader.onload = function() {
-        link.href = reader.result; // data url
-        link.click();
-      };
-      // link.href = myUrl;
-      // link.click();
-      // window.open(myUrl, "_blank");
-      // window.open(myUrl,)
+    //   let reader = new FileReader();
+    //   reader.readAsDataURL(blob); // converts the blob to base64 and calls onload
 
-      // var file = new File([data], "filename", {type: 'video/mp4', lastModified: Date.now()});
-
-      // var reader = new FileReader();
-
-      // reader.readAsDataURL(file);
-
-      // reader.onloadend =  function(fileUrl:any){
-      //     window.open(fileUrl)
-      // }
+    //   reader.onload = function() {
+    //     link.href = reader.result; // data url
+    //     link.click();
+    //   };
       
-    })
+      
+    // })
   }
 }

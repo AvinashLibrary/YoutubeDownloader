@@ -38,7 +38,7 @@
 
             </form>
            
-            <video id="videoPreview" style="width:60%;padding: 0.5rem;" width="60%" height="210" *ngFor="let ydata of previewUrl" controls>
+            <video  id="videoPreview" style="width:60%;padding: 0.5rem;" width="60%" height="210" *ngFor="let ydata of previewUrl" controls>
 
                 <source src="{{ydata.url}}">
             </video>
@@ -53,7 +53,7 @@
                 <mat-list-item class="example-full-width" style="background: blueviolet;display: inline-flex;">
                     <span style="color: white;" matListItemTitle>{{ydata.qualityLabel}}</span>
                     <span style="color: white;" matListItemLine>{{ydata.audioQuality}}</span>
-                    <button style="color: white;" (click)="generateBufferAndDownload3(ydata)" mat-icon-button matListItemMeta>
+                    <button style="color: white;" (click)="generateBufferAndDownload(ydata)" mat-icon-button matListItemMeta>
                         <mat-icon>download</mat-icon>
                     </button>
                     
