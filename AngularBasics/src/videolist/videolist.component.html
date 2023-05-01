@@ -1,0 +1,21 @@
+<mat-list style="height: 600px;" infiniteScroll
+[infiniteScrollDistance]="2"
+[infiniteScrollThrottle]="2"
+(scrolled)="onScroll()"
+[infiniteScrollDisabled]="isFullListDisplayed"
+[scrollWindow]="true">
+<!-- <mat-list-item> -->
+    <div *ngFor="let videoData of uiData">
+      <!-- <mat-icon matListItemIcon ><video></video></mat-icon> -->
+      <div matListItemTitle style="color: black;">{{videoData.user}}</div>
+      <!-- <div matListItemLine style="color: black;">{{videoData.fileName}}</div> -->
+      <!-- <mat-divider></mat-divider> -->
+      <video   (focus)="focusFunction($event)" (focusout)="focusOutFunction($event)" width="320" height="240" controls>
+        <source  src="http://localhost:3000/playVideo/{{videoData.fileName}}" type={{videoData.fileType}}>      
+      </video>
+    </div>
+  
+   <!-- </mat-list-item> -->
+     <!-- <mat-divider></mat-divider> -->
+   
+  </mat-list>

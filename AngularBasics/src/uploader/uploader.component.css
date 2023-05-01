@@ -1,0 +1,108 @@
+.closedCls {
+    background-color: red;
+    color: white;
+}
+
+.connectedCls {
+    background-color: green;
+    color: white;
+}
+
+.designedCard {
+    height: 4rem;
+    padding: 0.5rem;
+    width: 20rem;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    background: linear-gradient(180deg, #0C041E -8.41%, #4E21B7 98.85%);
+    transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.designedCard2 {
+    height: fit-content;
+    padding: 0.5rem;
+    width: fit-content;
+    color: white;
+    background: url('https://assets.msn.com/weathermapdata/1/static/background/v2.0/jpg/sunny.jpg');
+    transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.designedCard:hover {
+    animation: testerClass 5s infinite;
+
+}
+
+.designedCard::after {
+    content: "t";
+    display: none;
+    color: green;
+    animation: borderDesigner 10s infinite;
+
+}
+
+
+@keyframes borderDesigner {
+    0% {
+        width: 0rem;
+        height: 0.6rem;
+    }
+
+    50% {
+        width: fit-content;
+        height: 0.6rem;
+    }
+
+    75% {
+        width: fit-content;
+        height: 0.9rem;
+    }
+
+    100% {
+        width: fit-content;
+        height: fit-content;
+    }
+}
+
+
+@keyframes testerClass {
+
+    0% {
+        color: aqua;
+    }
+
+    50% {
+        color: pink;
+    }
+
+    75% {
+        color: lavender;
+    }
+
+    100% {
+        color: khaki;
+    }
+}
+
+.performanceDisplay {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    border-left: white dotted 0.1rem;
+    padding: 0.3rem;
+}
+
+.customeButtonWithIcon {
+    display: inline-flex;
+    padding: 0.2rem;
+    background-color: blue;
+    color: aliceblue;
+    border-radius: 5%;
+}
+
+.navDisplay{
+    display: grid;
+    grid-template-columns: auto auto auto auto auto ;
+    grid-column-gap:1rem;
+    padding: 3rem;
+}

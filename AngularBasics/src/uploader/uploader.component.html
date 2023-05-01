@@ -1,0 +1,122 @@
+<div>
+    <span>
+        <h1>Uploader</h1>
+        <nav class="navDisplay">
+            <button [ngClass]=" connection ? 'connectedCls' : 'closedCls' " (click)="checkConnection()">Connection
+                Check</button>
+            <div class="customeButtonWithIcon">
+                <mat-icon (click)="loadFileToAll()" aria-hidden="false" aria-label="Example home icon"
+                    fontIcon="upload">
+                </mat-icon>
+                <span>Combined Upload</span>
+            </div>
+            <div style="background-color: pink;border: 0.1rem black solid; box-shadow: 6px 6px 6px 6px  rgba(0, 0, 255, .2);" class="customeButtonWithIcon">
+                <mat-icon (click)="loadImageToNode()" aria-hidden="false" aria-label="Example home icon"
+                    fontIcon="upload">
+                </mat-icon>
+                <span> Upload To Node </span>
+            </div>
+        </nav>
+    </span>
+    <div style="display: grid; margin: 2rem;">
+        <div style="display: grid;
+            grid-template-columns: auto auto auto ; grid-row-gap: 1rem;grid-column-gap: 1rem;">
+
+            <div class="designedCard">
+
+
+                <div style="display:flex ; width: fit-content; flex-direction:column; margin:1rem">
+                    <span style="display: flex; align-items: center;flex-direction: row;">
+                        <span> Array Buffer</span>
+                        <mat-icon (click)="loadFileArray()" aria-hidden="false" aria-label="Example home icon"
+                            fontIcon="upload"></mat-icon>
+
+
+                    </span>
+                    <input id='fileUploader1' hidden type="file" />
+                </div>
+                <div class="performanceDisplay">
+                    <span *ngIf="!performanceMonitor.arrayBufferPerComplete && performanceMonitor.uploadedArr"> Local
+                        Upload Started</span>
+                    <span *ngIf="performanceMonitor.arrayBufferPerComplete"> Local Upload Finished</span>
+                    <span *ngIf="performanceMonitor.arrayBufferPerComplete"> {{performanceMonitor.arrayBufferPer}}
+                        ms</span>
+                </div>
+            </div>
+            <div class="designedCard">
+                <div style="display:flex ;  width:fit-content; flex-direction:column; margin:1rem">
+                    <span style="display: flex; align-items: center;flex-direction: row;">
+                        <span> Url</span>
+                        <mat-icon (click)="loadFileUrl()" aria-hidden="false" aria-label="Example home icon"
+                            fontIcon="upload"></mat-icon>
+
+
+                    </span>
+                    <input id='fileUploader2' hidden type="file" (change)="uploadFileContectUrl($event)" />
+                </div>
+                <div class="performanceDisplay">
+                    <span *ngIf="!performanceMonitor.arrayBufferPerComplete && performanceMonitor.uploadedArr"> Local
+                        Upload Started</span>
+                    <span *ngIf="performanceMonitor.arrayBufferPerComplete"> Local Upload Finished</span>
+                    <span *ngIf="performanceMonitor.arrayBufferPerComplete"> {{performanceMonitor.urlPer}}
+                        ms</span>
+                </div>
+            </div>
+
+            <div class="designedCard">
+
+
+                <div style="display:flex ; width: fit-content; flex-direction:column; margin:1rem">
+                    <span style="display: flex; align-items: center;flex-direction: row;">
+                        <span> Text</span>
+                        <mat-icon (click)="loadFileText()" aria-hidden="false" aria-label="Example home icon"
+                            fontIcon="upload"></mat-icon>
+
+
+                    </span>
+                    <input id='fileUploader3' hidden type="file" (change)="uploadFileContectText($event)" />
+                </div>
+                <div class="performanceDisplay">
+                    <span *ngIf="!performanceMonitor.arrayBufferPerComplete && performanceMonitor.uploadedArr"> Local
+                        Upload Started</span>
+                    <span *ngIf="performanceMonitor.arrayBufferPerComplete"> Local Upload Finished</span>
+                    <span *ngIf="performanceMonitor.arrayBufferPerComplete"> {{performanceMonitor.textPer}}
+                        ms</span>
+                </div>
+            </div>
+
+            <div class="designedCard">
+
+
+                <div style="display:flex ; width: fit-content; flex-direction:column; margin:1rem">
+                    <span style="display: flex; align-items: center;flex-direction: row;">
+                        <span> String</span>
+                        <mat-icon (click)="loadFileString()" aria-hidden="false" aria-label="Example home icon"
+                            fontIcon="upload"></mat-icon>
+
+
+                    </span>
+                    <input id='fileUploader4' hidden type="file" (change)="uploadFileContectBinar($event)" />
+                </div>
+                <div class="performanceDisplay">
+                    <span *ngIf="!performanceMonitor.arrayBufferPerComplete && performanceMonitor.uploadedArr"> Local
+                        Upload Started</span>
+                    <span *ngIf="performanceMonitor.arrayBufferPerComplete"> Local Upload Finished</span>
+                    <span *ngIf="performanceMonitor.arrayBufferPerComplete"> {{performanceMonitor.stringPer}}
+                        ms</span>
+                </div>
+            </div>
+
+
+            <!-- <div style="display:flex ; width: fit-content; flex-direction:column ; margin:1rem">
+            <span>Text</span>
+            <input type="file" (change)="uploadFileContectText($event)" />
+        </div>
+        <div style="display:flex ; width: fit-content; flex-direction:column ; margin:1rem">
+            <span>String</span>
+            <input type="file" (change)="uploadFileContectBinar($event)" />
+        </div> -->
+        </div>
+    </div>
+
+</div>

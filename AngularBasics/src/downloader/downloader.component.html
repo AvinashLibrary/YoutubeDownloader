@@ -1,0 +1,71 @@
+<div style="margin:1rem;">
+    <div style="
+        display: flex;
+        align-items: start;
+        flex-direction: row;
+        flex-wrap:wrap;
+    ">
+
+
+        <div style="width: 60%">
+        <div style="display: flex;" >
+            <form style="width:60%;padding: 0.5rem;" class="example-form">
+
+                <mat-form-field class="example-full-width">
+                    <mat-label>Paste Url Here</mat-label>
+                    <input (change)="loadPlatform($event)" type="url" matInput [formControl]="userUrlF">
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Platforms Supported</mat-label>
+                    <mat-select [(value)]="selectedPlatform" >
+                        <mat-option *ngFor="let plat of Platforms" [value]="plat.key">
+                            {{plat.value}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field *ngIf="selectedPlatform === 'youtube'" class="example-full-width">
+                    <mat-label>Output format</mat-label>
+                    <mat-select [formControl]="mimeTypeSel">
+                        <mat-option *ngFor="let food of foods" [value]="food">
+                            {{food.viewValue}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+
+
+
+
+            </form>
+           
+            <video id="videoPreview" style="width:60%;padding: 0.5rem;" width="60%" height="210" *ngFor="let ydata of previewUrl" controls>
+
+                <source src="{{ydata.url}}">
+            </video>
+        </div>
+
+                
+            
+            <div style="width:50%;display:inline-flex;justify-content:space-around">
+                <button (click)="generateVideoAndAudio()" mat-raised-button color="primary">Download</button>
+            </div>
+            <mat-list class="example-form" *ngFor="let ydata of youTubeData">
+                <mat-list-item class="example-full-width" style="background: blueviolet;display: inline-flex;">
+                    <span style="color: white;" matListItemTitle>{{ydata.qualityLabel}}</span>
+                    <span style="color: white;" matListItemLine>{{ydata.audioQuality}}</span>
+                    <button style="color: white;" (click)="generateBufferAndDownload3(ydata)" mat-icon-button matListItemMeta>
+                        <mat-icon>download</mat-icon>
+                    </button>
+                    
+                </mat-list-item>
+
+            </mat-list>
+           
+        </div>
+
+
+        
+
+
+    </div>
+</div>
