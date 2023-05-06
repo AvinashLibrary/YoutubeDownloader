@@ -1,15 +1,10 @@
 <div style="margin:1rem;">
-    <div style="
-        display: flex;
-        align-items: start;
-        flex-direction: row;
-        flex-wrap:wrap;
-    ">
+    <div>
 
 
-        <div style="width: 60%">
-        <div style="display: flex; flex-wrap: wrap;" >
-            <form style="width:60%;padding: 0.5rem;" class="example-form">
+        <div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(30rem,auto)) ;gap: 10px;" >
+            <form>
 
                 <mat-form-field class="example-full-width">
                     <mat-label>Paste Url Here</mat-label>
@@ -40,7 +35,7 @@
 
             </form>
            
-            <video  id="videoPreview" style="padding: 0.5rem;" width="auto" height="210" *ngFor="let ydata of previewUrl" controls>
+            <video  id="videoPreview" width="auto" height="210" *ngFor="let ydata of previewUrl" controls>
 
                 <source src="{{ydata.url}}">
             </video>
