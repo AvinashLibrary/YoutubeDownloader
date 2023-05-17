@@ -1,0 +1,108 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API to be checked by User",
+        "description": "Rest Api to be presented",
+        "contact": {
+            "name": "Avinash",
+            "email": "avinash.kumar.r@sap.com"
+        },
+        "version": "1.0.0"
+    },
+    "servers":[
+        {
+            "url":"http://localhost:3000/",
+            "description":"Local APi Testing"
+        }
+    ],
+
+    "paths":{
+        "/users":{
+            "get":{
+                "summary": "Get the lis of the Users ",
+                "description":"All the users are statcic Uuser as of now",
+                "tags":["Users"],
+                "schema":{
+                    "$ref":"#/components/schemas/getListOfUsers"
+                },
+                "responses":{
+                    "200":{
+                        "description":"User List is retrived",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"array",
+                                    "$ref":"#/components/schemas/getListOfUsers"
+                                }
+                            }
+                        }
+                    },
+                    "403":{
+                        "description":"User List is retrived",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                    "$ref":"#/components/schemas/errorSchema"
+                                }
+                            }
+                        }
+                    }
+                }
+
+            }
+        },
+        "/addNewUser":{
+            "post":{
+                "summary": "User is To be added ",
+                "description":"Static User is to be added",
+                "tags":["UsersItem"],
+                "responses":{
+                    "201":{
+                        "description":"User added to the list",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                    "$ref":"#/components/schemas/addUser"
+                                }
+                            }
+                        }
+                    }
+                    
+                }
+            }
+        }
+    },
+
+
+    "components":{
+        "schemas":{
+            "getListOfUsers":{
+                "type":"object",
+                "properties":{
+                    "name":{
+                        "type":"string",
+                        "default":"avinash Kumar"
+                    }
+                }
+            },
+            "addUser":{
+                "type":"object",
+                "properties":{
+                    "value":{
+                        "type":"string"
+                    }
+                }
+            },
+            "errorSchema":{
+                "type":"object",
+                 "properties":{
+                    "error":{
+                        "type":"string"
+                    }
+                }
+            }
+        }
+    }
+}
